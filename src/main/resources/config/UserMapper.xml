@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.neuedu.dao.UserMapper">
+
+  
+  <!-- 添加用户 -->
+  <insert id="save" parameterType="user" >
+     
+     insert into quser(username) values(#{username})
+  </insert>
+    <!--批量插入问题-->
+    <insert id="saveQues" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into question (qtype, title) values
+        <foreach item="item" collection="list" separator=",">
+            (#{item.qtype}, #{item.title})
+        </foreach>
+    </insert>
+
+
+
+
+</mapper>
