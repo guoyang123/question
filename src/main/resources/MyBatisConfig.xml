@@ -11,6 +11,7 @@
 <!-- 别名 -->
 <typeAliases>
  <typeAlias type="com.neuedu.entity.Quser" alias="user"/>
+ <typeAlias type="com.neuedu.entity.Qinfo" alias="qinfo"/>
 </typeAliases>
 
 </configuration>
