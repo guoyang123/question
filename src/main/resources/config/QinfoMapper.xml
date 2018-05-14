@@ -14,7 +14,22 @@
   </insert>
 
 
+    <resultMap id="qnoResultMap" type="qinfo">
+       <id column="id" property="id"/>
+        <result column="qno" property="qno"/>
+        <result column="qtitle" property="qtitle"/>
+        <result column="qdesc" property="qdesc"/>
+        <collection property="questionList" ofType="que" column="qno" autoMapping="true">
+        </collection>
+    </resultMap>
 
+    <!--根据qno查询整个问卷内容-->
+    <select id="findByQno" parameterType="java.lang.String" resultMap="qnoResultMap">
+        select info.id ,info.qno ,info.qtitle,info.qdesc,que.title,que.qtype from qinfo info
+        left join question que
+        on info.qno=que.qno
+        where info.qno=#{qno}
+    </select>
 
 
 </mapper>

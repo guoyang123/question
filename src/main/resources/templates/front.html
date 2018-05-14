@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>问卷调查</title>
+
+
+    <link th:href="@{/css/flex.css}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<img th:src="@{/img/wx.jpg} " width="100%" />
+<div id="parent_div">
+
+    <div id="desc_div">
+        <h3 >青海省麻醉专业医疗质量控制指标完成情况调研表</h3>
+        <p style="font-size: 10px;">质控指标依据：国卫办医函(2015)252号<br/>所有指标上报数据涵盖范围为<br/>2017年一月一日到2117年12月31日全年数据</p>
+        <hr style="width: 100%; height: 1px; border: 1px solid #f1f1f1; margin-top: 20px;"></hr>
+    </div>
+    <div>
+        <h4>医院名称: <span style="color: red;">*</span></h4>
+        <input type="text" />
+    </div>
+    <div>
+        <h4>医院等级: <span style="color: red;">*</span></h4>
+        <select>
+            <option>甲等</option>
+            <option>2等</option>
+            <option>3等</option>
+        </select>
+    </div>
+</div>
+
+
+</body>
+</html>

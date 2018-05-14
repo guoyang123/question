@@ -1,6 +1,7 @@
 package com.neuedu.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**问卷类*/
 public class Qinfo implements Serializable {
@@ -9,6 +10,8 @@ public class Qinfo implements Serializable {
     private String  qtitle ;//问卷标题
     private String qdesc         ;// 问卷描述
      private int        userid;//创建人
+
+    private List<Question> questionList;
 
     public Qinfo() {
 
@@ -62,6 +65,14 @@ public class Qinfo implements Serializable {
         this.userid = userid;
     }
 
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
     @Override
     public String toString() {
         return "Qinfo{" +
@@ -70,6 +81,7 @@ public class Qinfo implements Serializable {
                 ", qtitle='" + qtitle + '\'' +
                 ", qdesc='" + qdesc + '\'' +
                 ", userid=" + userid +
+                ", questionList=" + questionList +
                 '}';
     }
 }

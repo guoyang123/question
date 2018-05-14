@@ -19,4 +19,10 @@ public class QinfoServiceImpl implements QInfoService {
 
        return  qinfoMapper.save(qinfo);
     }
+
+    @Override
+    public Qinfo findByQno(String qno) {
+       return qinfoMapper.findByQno(qno);
+
+    }
 }

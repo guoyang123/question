@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Question implements Serializable{
     private Integer id;
+    private String qno;//问卷编号
     //题目标题
     private String title;
     //题目类型
@@ -31,6 +32,14 @@ public class Question implements Serializable{
 
     public void setQtype(String qtype) {
         this.qtype = qtype;
+    }
+
+    public String getQno() {
+        return qno;
+    }
+
+    public void setQno(String qno) {
+        this.qno = qno;
     }
 
     @Override

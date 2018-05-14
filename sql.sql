@@ -9,7 +9,8 @@ create table quser(
 create table  question(
  id            int           primary key  auto_increment,
  title         varchar(200)  ,
- qtype          varchar(20)
+ qtype          varchar(20),
+ qno           VARCHAR (30) not null -- 问卷编号
 );
 #问卷信息表
 create table qinfo(

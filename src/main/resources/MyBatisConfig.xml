@@ -12,6 +12,7 @@
 <typeAliases>
  <typeAlias type="com.neuedu.entity.Quser" alias="user"/>
  <typeAlias type="com.neuedu.entity.Qinfo" alias="qinfo"/>
+ <typeAlias type="com.neuedu.entity.Question" alias="que"/>
 </typeAliases>
 
 </configuration>

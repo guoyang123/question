@@ -10,9 +10,9 @@
     <!--批量插入问题-->
     <insert id="saveQues" useGeneratedKeys="true"
             keyProperty="id">
-        insert into question (qtype, title) values
+        insert into question (qtype, title,qno) values
         <foreach item="item" collection="list" separator=",">
-            (#{item.qtype}, #{item.title})
+            (#{item.qtype}, #{item.title},#{item.qno})
         </foreach>
     </insert>
 
