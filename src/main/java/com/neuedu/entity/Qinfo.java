@@ -12,7 +12,7 @@ public class Qinfo implements Serializable {
      private int        userid;//创建人
 
     private List<Question> questionList;
-
+    private boolean isSelect;
     public Qinfo() {
 
     }
@@ -23,6 +23,14 @@ public class Qinfo implements Serializable {
         this.qtitle = qtitle;
         this.qdesc = qdesc;
         this.userid = userid;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 
     public int getId() {

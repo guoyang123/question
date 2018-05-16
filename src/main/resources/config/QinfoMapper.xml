@@ -31,5 +31,9 @@
         where info.qno=#{qno}
     </select>
 
+    <!--根据用户id查询出该用户所创建的所有问卷-->
+    <select id="findAllByUserId" parameterType="int" resultType="qinfo">
+      select id, qno,qtitle from qinfo where userid=#{userid}
+    </select>
 
 </mapper>
