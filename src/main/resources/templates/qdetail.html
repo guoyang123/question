@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h2 th:text="${session.qinfos.size()}"></h2>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/jquery.qrcode.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/qdetail.js}" ></script>
 
-</body>
+		<link rel="stylesheet" th:href="@{/css/qdetail.css}">
+
+		<style>
+
+		    
+		</style>
+	</head>
+	<body>
+		
+		<div class="main-container">
+		<div class="nav-bar">
+			<div class="ui-sidebar">
+				<a href="#" class="return-wrapper">
+					<em class="icon return-icon"></em>
+					
+
+				</a>
+				<a class="nav-items" th:href="@{http://localhost:8080/skip}"
+				   target="showcontent" id="nav-items-recycling">
+					<div class="items-box">
+						<i class="icon recycling"></i>
+						<span>发送问卷</span>
+					</div>
+				</a>
+				<a class="nav-items" href="analysis.html" target="showcontent" id="nav-items-analysis">
+					<div class="items-box">
+						<i class="icon analysis"></i>
+						<span>下载&分析</span>
+					</div>
+				</a>
+				<a></a>
+			</div>
+			
+		</div>
+		<div class="inside-wrapper">
+			
+		<div class="inside-header">
+			
+			<div class="_select_wrap">
+				<select class="_select">
+					<option   th:selected="${info.select}?'selected':''"  th:each="info,infostate:${session.qinfos}" th:value="${info.qno}" th:text="${info.qtitle}" ></option>
+					</select>
+			</div>
+			
+			
+		</div>
+		<div class="inside-main">
+			<div style="width: 1px; height: 1px;"></div>
+
+			
+			<iframe th:src="@{http://localhost:8080/skip}" name="showcontent" id="external-frame" class="box" border="0px" frameborder="0px"></iframe>
+		</div>
+		</div>
+		</div>
+		
+	
+		
+	
+	</body>
 </html>
+
+

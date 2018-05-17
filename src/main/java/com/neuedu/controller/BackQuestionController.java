@@ -119,5 +119,11 @@ public class BackQuestionController {
   }
 
 
+  /**iframe提交src跳转到不同的页面*/
+  @RequestMapping("/skip")
+  public String  skippage(){
+
+      return "content";
+  }
 
 }

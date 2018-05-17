@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/jquery.qrcode.min.js}" ></script>
+		<style>
+			
+			
+			 .box .box-content{
+		  	height: 240px;
+		  	margin-top:20px;
+		  
+		  	
+		  }
+		  .box .box-content #qrcode{
+		  	width: 140px;
+		  	height: 140px;
+		  	
+		  	margin-top: 50px;
+		  	margin-left: 50px;
+		  	border: 1px solid  #d7d8d9;
+		  	padding: 20px;
+		  }
+		  .box .box-content .detail{
+		  	position: absolute;
+		  	width: 300px;
+		  	height: 180px;
+		  	left: 240px;
+		  	top:60px;
+		  /*	background-color: orange;*/
+		    margin-top: 20px;
+		  }
+		    .box .box-content .detail span{
+		    	color: #333;
+		    	margin-left: 30px;
+		    	font-weight: bold;
+		    }
+		    ._link{
+		    	display: inline-block;
+		    	height: 30px;
+		    	border-radius: 4px;
+		    	border: 1px solid  #c0c1c2;
+		    	background: #f7f8f9;
+		    	margin-left: 30px;
+		    	margin-top: 10px;
+		    	padding: 4px;
+		    }
+		</style>
+	</head>
+	<body>
+		
+		
+		
+			<div class="box">
+				<div style="width: 1px; height: 1px;"></div>
+				<div class="box-content">
+					<div style="width: 1px; height: 1px;"></div>
+					<div id="qrcode"></div>
+					<div class="detail">
+						<!--问卷连接与二维码-->
+						<span>问卷链接与二维码</span>
+						<input type="text" class="_link"  disabled="disabled" value="http://www.baidu.com"/>
+					</div>
+				</div>
+			</div>
+		
+	</body>
+</html>
+
+	   <script>
+		 jQuery(function(){
+		    jQuery('#qrcode').qrcode(
+		    	{width: 140,height: 140,correctLevel:0,text: "http://10.25.129.133:8080/front/generate/1526287253889"}
+		    	);
+		})
+		 
+		
+			
+		</script>
