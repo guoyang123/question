@@ -20,14 +20,16 @@
         <p style="font-size: 10px;">质控指标依据：国卫办医函(2015)252号<br/>所有指标上报数据涵盖范围为<br/>2017年一月一日到2117年12月31日全年数据</p>
         <hr style="width: 100%; height: 1px; border: 1px solid #f1f1f1; margin-top: 20px;"></hr>
     </div>
+    <form action="" method="post">
     <div th:each="info,itestate:${qinfo.questionList}">
 
         <div>
             <h4 th:text="${info.title}"><span style="color: red;">*</span></h4>
-            <input type="text" />
+            <input type="text" th:name="name_+${info.getId()}" />
         </div>
 
     </div>
+    </form>
     <!--<div>
         <h4>医院名称: <span style="color: red;">*</span></h4>
         <input type="text" />

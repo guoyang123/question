@@ -19,18 +19,25 @@ $(function(){
         $("#nav-items-recycling").css("backgroundColor","#0e2b47");
     });
 
+
+
+
 })
 /**点击下拉列表*/
 $(function(){
     $("select._select").change(function () {
          /*alert($(this).val()+$(this).text());*/
 
-//"http://localhost:8080/front/generate/"+$(this).val()
-        alert($(window.frames["showcontent"].document).find("input._link").html()+"aaa");
+       var _qinfo="http://localhost:8080/front/generate/"+$(this).val()
+       $( document.getElementById("external-frame").contentWindow.document.getElementsByClassName("_link")[0]).val(_qinfo);
 
-         jQuery('#qrcode').qrcode(
-            {width: 140,height: 140,correctLevel:0,text: "http://localhost:8080/front/generate/"+$(this).val()}
+        $( document.getElementById("external-frame").contentWindow.document.getElementById("qrcode")).html("");
+        $( document.getElementById("external-frame").contentWindow.document.getElementById("qrcode")).qrcode(
+            {width: 140,height: 140,correctLevel:0,text: _qinfo}
         );
+        /* jQuery('#qrcode').qrcode(
+            {width: 140,height: 140,correctLevel:0,text: "http://localhost:8080/front/generate/"+$(this).val()}
+        );*/
 
 
     });

@@ -20,3 +20,11 @@ create table qinfo(
  qdesc          varchar(200)  , -- 问卷描述
  userid          int       -- 该user创建此问卷
 );
+# 答案表
+create table qanswer(
+id            int                PRIMARY  key  auto_increment,
+qid           int              ,-- 问题id
+answer        varchar(200)     , -- 问题答案
+answertime    VARCHAR (20)     , -- 提交时间
+userip        varchar(30)       -- ip
+);
