@@ -25,7 +25,7 @@
 
     <!--根据qno查询整个问卷内容-->
     <select id="findByQno" parameterType="java.lang.String" resultMap="qnoResultMap">
-        select info.id ,info.qno ,info.qtitle,info.qdesc,que.title,que.qtype from qinfo info
+        select info.id, info.qno ,info.qtitle,info.qdesc,que.qid,que.title,que.qtype from qinfo info
         left join question que
         on info.qno=que.qno
         where info.qno=#{qno}

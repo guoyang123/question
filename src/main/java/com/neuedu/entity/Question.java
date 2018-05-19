@@ -3,19 +3,19 @@ package com.neuedu.entity;
 import java.io.Serializable;
 
 public class Question implements Serializable{
-    private Integer id;
+    private Integer qid;
     private String qno;//问卷编号
     //题目标题
     private String title;
     //题目类型
     private String qtype;
 
-    public Integer getId() {
-        return id;
+    public Integer getQid() {
+        return qid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setQid(Integer qid) {
+        this.qid = qid;
     }
 
     public String getTitle() {
@@ -45,7 +45,7 @@ public class Question implements Serializable{
     @Override
     public String toString() {
         return "Question{" +
-                "id=" + id +
+                "qid=" + qid +
                 ", title='" + title + '\'' +
                 ", type='" + qtype + '\'' +
                 '}';

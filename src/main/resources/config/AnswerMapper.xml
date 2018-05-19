@@ -4,15 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 
-<mapper namespace="com.neuedu.dao.QuestionMapper">
+<mapper namespace="com.neuedu.dao.AnswerMapper">
 
 
     <!--批量插入问题-->
-    <insert id="saveQues" useGeneratedKeys="true"
-            keyProperty="qid">
-        insert into question (qtype, title,qno) values
+    <insert id="saveBatch" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into qanswer (qid, qtitle,qno,answer,answertime,userip) values
         <foreach item="item" collection="list" separator=",">
-            (#{item.qtype}, #{item.title},#{item.qno})
+            (#{item.qid}, #{item.qtitle},#{item.qno},#{item.answer},now(),#{item.userip})
         </foreach>
     </insert>
 
