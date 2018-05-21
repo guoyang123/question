@@ -16,6 +16,11 @@
         </foreach>
     </insert>
 
+  <!--  findAllByQno-->
+    <select id="findAllByQno" parameterType="java.lang.String" resultType="qanser">
+
+        select id,qid,qtitle,qno,answer,answertime,userip from qanswer where qno=#{qno}
+    </select>
 
 
 

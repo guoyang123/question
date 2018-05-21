@@ -6,12 +6,14 @@ import com.neuedu.consts.Const;
 import com.neuedu.entity.Qinfo;
 import com.neuedu.entity.Question;
 import com.neuedu.entity.Quser;
+import com.neuedu.service.AnswerService;
 import com.neuedu.service.QuestionService;
 import com.neuedu.service.impl.QinfoServiceImpl;
 import com.neuedu.vo.QinfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +38,8 @@ public class BackQuestionController {
 
     @Autowired
     private QinfoServiceImpl qinfoService;
+    @Autowired
+    private AnswerService answerService;
 
     /**
      * 创建问卷调查
@@ -124,6 +128,19 @@ public class BackQuestionController {
   public String  skippage(){
 
       return "content";
+  }
+
+
+  /**
+   * 根据qno查询答案信息并将excel下载到本地
+   * */
+  @RequestMapping(value = "/{qno}/download")
+  @ResponseBody
+  public void download(@PathVariable("qno") String qno,HttpServletResponse response){
+      System.out.println("================download==controller===");
+      answerService.findAllByQno(qno,response);
+     // answerService.downloadFile(response);
+
   }
 
 }

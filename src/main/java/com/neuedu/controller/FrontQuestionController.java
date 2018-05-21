@@ -56,7 +56,4 @@ public class FrontQuestionController {
 
         return "{\"success\":1}";
     }
-
-
-
 }

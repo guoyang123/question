@@ -3,10 +3,12 @@ package com.neuedu.dao;
 import com.neuedu.entity.Qinfo;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component(value = "qinfoMapper")
 public interface QinfoMapper {
     int  save(Qinfo qinfo);
     Qinfo findByQno(String qno);

@@ -11,7 +11,7 @@ public class QAnswer implements Serializable {
     private String  qtitle;// 问题标题
     private String qno;//问卷编号
     private String answer     ;// 问题答案
-    private Long answertime  ;// 提交时间
+    private String answertime  ;// 提交时间
     private String userip      ;// ip
 
 
@@ -55,11 +55,11 @@ public class QAnswer implements Serializable {
         this.answer = answer;
     }
 
-    public Long getAnswertime() {
+    public String getAnswertime() {
         return answertime;
     }
 
-    public void setAnswertime(Long answertime) {
+    public void setAnswertime(String answertime) {
         this.answertime = answertime;
     }
 
