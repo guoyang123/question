@@ -13,5 +13,7 @@ public interface QinfoMapper {
     int  save(Qinfo qinfo);
     Qinfo findByQno(String qno);
     List<Qinfo> findAllByUserId(Integer userid);
+    /**修改题量参数*/
+    Integer  updateTotalQ(Qinfo qinfo);
 }
 

@@ -10,7 +10,7 @@
   <!-- 添加用户 -->
   <insert id="save" parameterType="qinfo" >
      
-     insert into qinfo(qno,qtitle,qdesc,userid) values(#{qno},#{qtitle},#{qdesc},#{userid})
+     insert into qinfo(qno,qtitle,qdesc,userid,createtime) values(#{qno},#{qtitle},#{qdesc},#{userid},now())
   </insert>
 
 
@@ -34,6 +34,12 @@
     <!--根据用户id查询出该用户所创建的所有问卷-->
     <select id="findAllByUserId" parameterType="int" resultType="qinfo">
       select id, qno,qtitle from qinfo where userid=#{userid}
+    </select>
+
+    <!--修改题量参数-->
+    <select id="updateTotalQ" parameterType="qinfo" resultType="java.lang.Integer">
+        update qinfo set totalQ=#{totalQ} where qno=#{qno}
+
     </select>
 
 </mapper>

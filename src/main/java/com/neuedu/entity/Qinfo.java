@@ -9,7 +9,9 @@ public class Qinfo implements Serializable {
     private String qno   ;         //问卷编号
     private String  qtitle ;//问卷标题
     private String qdesc         ;// 问卷描述
+    private String createtime;
      private int        userid;//创建人
+    private int totalQ;//题量
 
     private List<Question> questionList;
     private boolean isSelect;
@@ -81,6 +83,22 @@ public class Qinfo implements Serializable {
         this.questionList = questionList;
     }
 
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
+
+    public int getTotalQ() {
+        return totalQ;
+    }
+
+    public void setTotalQ(int totalQ) {
+        this.totalQ = totalQ;
+    }
+
     @Override
     public String toString() {
         return "Qinfo{" +
@@ -88,8 +106,11 @@ public class Qinfo implements Serializable {
                 ", qno='" + qno + '\'' +
                 ", qtitle='" + qtitle + '\'' +
                 ", qdesc='" + qdesc + '\'' +
+                ", createtime='" + createtime + '\'' +
                 ", userid=" + userid +
+                ", totalQ=" + totalQ +
                 ", questionList=" + questionList +
+                ", isSelect=" + isSelect +
                 '}';
     }
 }

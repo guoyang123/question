@@ -11,6 +11,6 @@ import java.util.List;
 @Component(value = "userMapper")
 public interface UserMapper {
     int  save(Quser user);
-
+    Quser  findUserByUsernameAndPwd(Quser quser);
 }
 

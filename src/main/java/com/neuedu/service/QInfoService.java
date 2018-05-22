@@ -14,4 +14,6 @@ public interface QInfoService {
     Qinfo findByQno(String qno);
     /**根据userid查询该用户所有的问卷信息*/
     List<Qinfo> findAllByUserId(HttpServletRequest request);
+    /**修改题量*/
+    int  updateTotalQ(Qinfo qinfo);
 }

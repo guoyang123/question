@@ -99,7 +99,11 @@ public class BackQuestionController {
         Gson gson=new Gson();
         List<Question> questionList= gson.fromJson(ques,new TypeToken<List<Question>>() {}.getType());
          questionService.saveQuestions(questionList);
-
+         //保存该问卷的题量信息
+        Qinfo qinfo=new Qinfo();
+        qinfo.setQno(questionList.get(0).getQno());
+        qinfo.setTotalQ(questionList.size());
+         qinfoService.updateTotalQ(qinfo);
        //session中获取用户id
        Object o=session.getAttribute(Const.USER_FROM_SESSION);
         Quser quser=null;

@@ -48,4 +48,10 @@ public class QinfoServiceImpl implements QInfoService {
 
         return infos;
     }
+
+    @Override
+    public int updateTotalQ(Qinfo qinfo) {
+        qinfoMapper.updateTotalQ(qinfo);
+        return 0;
+    }
 }
