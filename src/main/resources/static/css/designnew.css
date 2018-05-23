@@ -1,11 +1,11 @@
 
 .desginnew_parent_div{
-	width: 80%;
-	margin: 0px auto;
+    width: 80%;
+    margin: 0px auto;
 }
 .designnew_finish_div{
-	background: #888;
-	height: 60px;
+    background: #888;
+    height: 60px;
 }
 
 
@@ -25,58 +25,80 @@ a.sumitbutton, a.sumitbutton:visited {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    
+
 }
 #topnav{
-	margin-top: 10px;
+    margin-top: 10px;
 }
 #topnav ul{
-	list-style: none;
-	background: #30a6f5;
-	height: 42px;
-	/*width: 996px;*/
+    list-style: none;
+    background: #30a6f5;
+    height: 42px;
+    /*width: 996px;*/
 }
 #topnav ul li{
-	display: inline-block;
+    display: inline-block;
 }
 #topnav a{
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+
     display: block;
     font-size: 14px;
     cursor: pointer;
     color: #FFF;
     height: 30px;
-  
+    width: 70px;
+
+
     line-height: 30px;
     text-align: left;
-    border-right: 1px solid #0072bc;
+
     margin-top: 5px;
+    border-radius: 6px;
+    padding-left: 5px;
+
 
 }
 #topnav a:hover{
-	background: white;
-	color: #0056B3;
+    background: white;
+    color: #f17819;
+
+}
+#topnav a:hover .design-radio {
+    background-position: -386px -66px;
+
 }
 
+#topnav a:hover .design-check {
+    background-position: -387px -99px;
+}
+#topnav a:hover .design-text {
+    background-position: -385px -132px;
+}
+#topnav a:hover .design-juzhen{
+    background-position: -385px -166px;
+}
 
 .design-qtype {
     height: 20px;
-    width: 23px;
+    width: 25px;
     margin: 0 3px 0 5px;
+    padding: 12px;
 }
 .design-icon {
-    background-image:url(../img/icoall.png);
-    background-repeat: no-repeat;
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
-    height: 16px;
-    width: 17px;
-    margin: 0 3px 0 0;
+    /* background-image:url(../img/icoall.png);
+     background-repeat: no-repeat;
+ background-color: black;
+     display: inline-block;
+     overflow: hidden;
+
+     height: 16px;
+     width: 17px;
+     margin: 0 3px 0 0;*/
 }
 .design-radio {
     background-position: -356px -66px;
+
 }
 .design-check {
     background-position: -357px -99px;
@@ -84,25 +106,27 @@ a.sumitbutton, a.sumitbutton:visited {
 .design-text {
     background-position: -355px -132px;
 }
-
+.design-juzhen{
+    background-position: -355px -166px;
+}
 
 .surveryhead{
-	width: 1000px;
-	height: 100px;
-	margin: 0px auto;
-	
-	border: 2px solid rgb(255, 255, 255); 
-	margin-top: 18px; 
-	
-	 cursor: pointer; 
-	 padding-top: 10px; 
-	 padding-bottom: 10px;
+    width: 1000px;
+    height: 100px;
+    margin: 0px auto;
+
+    border: 2px solid rgb(255, 255, 255);
+    margin-top: 18px;
+
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .surveryhead:hover{
-	border: 2px solid rgb(251, 181, 83); 
+    border: 2px solid rgb(251, 181, 83);
 }
 .surveryhead h1{
-	font-size: 24px !important;
+    font-size: 24px !important;
     font-weight: bold;
     color: #f53d05;
     vertical-align: middle;
@@ -125,11 +149,11 @@ a.sumitbutton, a.sumitbutton:visited {
 }
 
 .inputtext {
-	display: block;
+    display: block;
     border: solid 1px #cdcdcd;
     padding: 3px;
     vertical-align: middle;
-   margin: 0px auto;
+    margin: 0px auto;
 }
 
 .div_ins_question {
@@ -148,7 +172,7 @@ a.sumitbutton, a.sumitbutton:visited {
 }
 
 .spanLeft {
-   /* float: left;*/
+    /* float: left;*/
 }
 
 input.submitbutton {
@@ -165,11 +189,11 @@ input.submitbutton {
     overflow: visible;
 }
 input.submitbutton:hover{
-	background: #fda420;
+    background: #fda420;
 }
 
 .spanRight {
-   /* float: right;*/
+    /* float: right;*/
 }
 
 .stuff {
@@ -179,12 +203,12 @@ input.submitbutton:hover{
     line-height: 23px;
 }
 .stuff a{
-	color: #6d6e71;
-	text-decoration: none;
+    color: #6d6e71;
+    text-decoration: none;
 }
 .stuff a:hover{
-	color: #f90;
-	
+    color: #f90;
+
 }
 dl, dt, dd, ul, li, ol, p, form, img {
     padding: 0px;
