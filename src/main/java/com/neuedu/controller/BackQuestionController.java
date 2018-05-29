@@ -55,12 +55,13 @@ public class BackQuestionController {
      * 进入问卷调查设计页面
      * */
     @RequestMapping("/back/designnew")
-    public String designnew(HttpServletRequest request,Model model){
+    public String designnew(HttpServletRequest request,
+                            Model model,HttpSession session){
         System.out.println("=======designnew====");
         //问卷标题
         String qtitle= request.getParameter("qtitle");
         //用户id
-        int userid=1;
+        int userid=((Quser)(session.getAttribute(Const.USER_FROM_SESSION))).getId();
         //生成问卷编号
         String qno=String.valueOf(System.currentTimeMillis());
 
@@ -90,7 +91,7 @@ public class BackQuestionController {
     /**
      * 获取创建的问卷信息
      * */
-    @RequestMapping(value = "/questions")
+    @RequestMapping(value = "/back/questions")
     @ResponseBody
   public  String  getQuestions(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
       String ques=request.getParameter("ques");
@@ -113,7 +114,8 @@ public class BackQuestionController {
            request.setAttribute("qno",questionList.get(0).getQno());
        }
         List<Qinfo> qinfos= qinfoService.findAllByUserId(request);
-        System.out.println("userid="+quser.getId()+" qno="+questionList.get(0).getQno()+" size="+qinfos.size());
+      //  System.out.println("所有问卷信息:"+qinfos);
+
        /**将某位用户的所有问卷查询出来*/
         session.setAttribute("qinfos",qinfos);
 
@@ -121,14 +123,14 @@ public class BackQuestionController {
   }
 
 
-  @RequestMapping(value = "/findallques")
+  @RequestMapping(value = "/back/findallques")
     public String findallques(){
         return "qdetail";
   }
 
 
   /**iframe提交src跳转到不同的页面*/
-  @RequestMapping("/skip")
+  @RequestMapping("/back/skip")
   public String  skippage(){
 
       return "content";
@@ -138,7 +140,7 @@ public class BackQuestionController {
   /**
    * 根据qno查询答案信息并将excel下载到本地
    * */
-  @RequestMapping(value = "/{qno}/download")
+  @RequestMapping(value = "/back/{qno}/download")
   @ResponseBody
   public void download(@PathVariable("qno") String qno,HttpServletResponse response){
       System.out.println("================download==controller===");

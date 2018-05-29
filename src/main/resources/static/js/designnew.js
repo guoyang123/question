@@ -43,14 +43,14 @@ function sendData(datas){
 	//加载网络数据
 	$.ajax({
 		type:"post",
-		url:"http://localhost:8080/questions",
+		url:"questions",
 		data:{"ques":datas},
 		async:true,
 		dataType:"json",
 		success:function(data){
 			console.log(data);
 			//页面的跳转
-			window.location.href="http://localhost:8080/findallques";
+			window.location.href="findallques";
 		}
 	});
 })

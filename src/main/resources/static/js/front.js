@@ -50,7 +50,7 @@ function sendData(datas){
         //加载网络数据
         $.ajax({
             type:"get",
-            url:"http://10.25.129.133:8080/front/answer",
+            url:"http://gsmzzk.com:8080/front/answer",
             data:{"answers":datas},
             async:true,
             dataType:"json",

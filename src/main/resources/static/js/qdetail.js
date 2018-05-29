@@ -28,7 +28,7 @@ $(function(){
     $("select._select").change(function () {
          /*alert($(this).val()+$(this).text());*/
 
-       var _qinfo="http://localhost:8080/front/generate/"+$(this).val()
+       var _qinfo="http://gsmzzk.com:8080/front/generate/"+$(this).val()
        $( document.getElementById("external-frame").contentWindow.document.getElementsByClassName("_link")[0]).val(_qinfo);
 
         $( document.getElementById("external-frame").contentWindow.document.getElementById("qrcode")).html("");
@@ -56,3 +56,14 @@ function setIframeHeight(iframe) {
 window.onload = function () {
     setIframeHeight(document.getElementById('external-frame'));
 };
+
+/**
+ * 下载excel
+ * */
+function _download(){
+
+   //获取到qno
+
+
+
+}

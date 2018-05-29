@@ -6,7 +6,7 @@
 		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" ></script>
 		<script type="text/javascript" th:src="@{/js/jquery.qrcode.min.js}" ></script>
 		<script type="text/javascript" th:src="@{/js/qdetail.js}" ></script>
-		<script type="text/javascript" th:src="@{/js/clipboard.js}"></script>
+		<script type="text/javascript" th:src="@{/js/clipboard.min.js}"></script>
 		<link rel="stylesheet" th:href="@{/css/qdetail.css}">
 
 		<style>
@@ -24,14 +24,14 @@
 					
 
 				</a>
-				<a class="nav-items" th:href="@{http://localhost:8080/skip}"
+				<a class="nav-items" th:href="@{skip}"
 				   target="showcontent" id="nav-items-recycling">
 					<div class="items-box">
 						<i class="icon recycling"></i>
 						<span>发送问卷</span>
 					</div>
 				</a>
-				<a class="nav-items" href="analysis.html" target="showcontent" id="nav-items-analysis">
+				<a class="nav-items" href="javascript:void(0)" onclick="_download()" target="showcontent" id="nav-items-analysis">
 					<div class="items-box">
 						<i class="icon analysis"></i>
 						<span>下载&分析</span>
@@ -47,7 +47,11 @@
 			
 			<div class="_select_wrap">
 				<select class="_select">
-					<option   th:selected="${info.select}?'selected':''"  th:each="info,infostate:${session.qinfos}" th:value="${info.qno}" th:text="${info.qtitle}" ></option>
+					<option    th:each="info,infostate:${session.qinfos}"
+							   th:value="${info.qno}"
+							   th:text="${info.qtitle}"
+					           th:selected="${info.select}?true:false"
+					           ></option>
 					</select>
 			</div>
 			
@@ -57,7 +61,7 @@
 			<div style="width: 1px; height: 1px;"></div>
 
 			
-			<iframe th:src="@{http://localhost:8080/skip}" name="showcontent" id="external-frame" class="box" border="0px" frameborder="0px"></iframe>
+			<iframe th:src="@{skip}" name="showcontent" id="external-frame" class="box" border="0px" frameborder="0px"></iframe>
 		</div>
 		</div>
 		</div>
