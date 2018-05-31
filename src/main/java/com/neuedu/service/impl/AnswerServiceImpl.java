@@ -66,9 +66,8 @@ public class AnswerServiceImpl implements AnswerService {
             }
 
             //将文件保存到指定的位置
-        File file=new File("C:\\user1.xls");
+             File file=new File("/usr/gy/download/user1.xls");
             try {
-
                 fos = new FileOutputStream(file);
                 workbook.write(fos);
                 System.out.println("写入成功");
@@ -109,6 +108,7 @@ public class AnswerServiceImpl implements AnswerService {
                     int i = bis.read(buffer);
                     while (i != -1) {
                         os.write(buffer, 0, i);
+                        System.out.println("下载时每一桶数据:"+buffer.toString());
                         i = bis.read(buffer);
                     }
                     System.out.println("success");

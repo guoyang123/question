@@ -19,8 +19,8 @@ function sendData(datas){
     $(function(){
         //加载网络数据
         $.ajax({
-            type:"post",
             url:"login/submit",
+            type:"post",
             data:{"quser":datas},
             async:true,
             dataType:"json",

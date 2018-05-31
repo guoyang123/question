@@ -31,7 +31,11 @@
 						<span>发送问卷</span>
 					</div>
 				</a>
-				<a class="nav-items" href="javascript:void(0)" onclick="_download()" target="showcontent" id="nav-items-analysis">
+
+				<a class="nav-items" href="javascript:void(0);"
+				    onclick="_download();return false;"
+				    target="showcontent"
+				   id="nav-items-analysis">
 					<div class="items-box">
 						<i class="icon analysis"></i>
 						<span>下载&分析</span>
@@ -51,17 +55,32 @@
 							   th:value="${info.qno}"
 							   th:text="${info.qtitle}"
 					           th:selected="${info.select}?true:false"
-					           ></option>
+					           >
+					</option>
 					</select>
 			</div>
-			
-			
+
+
+			<!--初始化二维码信息-->
+			<script >
+				window.onload=function () {
+                    var _qno=$("._select option[selected='selected']").val();
+                    var _qinfo="http://gsmzzk.com:8080/front/generate/"+_qno;
+                    $( document.getElementById("external-frame").contentWindow.document.getElementsByClassName("_link")[0]).val(_qinfo);
+                    $( document.getElementById("external-frame").contentWindow.document.getElementById("qrcode")).html("");
+                    $( document.getElementById("external-frame").contentWindow.document.getElementById("qrcode")).qrcode(
+                        {width: 140,height: 140,correctLevel:0,text: _qinfo}
+                    );
+				}
+			</script>
 		</div>
 		<div class="inside-main">
 			<div style="width: 1px; height: 1px;"></div>
 
 			
-			<iframe th:src="@{skip}" name="showcontent" id="external-frame" class="box" border="0px" frameborder="0px"></iframe>
+			<iframe th:src="@{skip}" name="showcontent"
+					id="external-frame" class="box" border="0px"
+					frameborder="0px"></iframe>
 		</div>
 		</div>
 		</div>
