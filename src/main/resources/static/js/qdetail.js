@@ -80,7 +80,8 @@ function sendData(_qno){
             success:function(data){
                 console.log(data);
                 //页面的跳转
-                window.location.href="findallques";
+               // window.location.href="findallques";
+                window.location.href="http://localhost:8080/back/1527812674200/download";
             }
         });
     })

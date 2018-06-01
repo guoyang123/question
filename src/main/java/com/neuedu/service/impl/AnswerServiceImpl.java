@@ -7,11 +7,18 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -66,13 +73,14 @@ public class AnswerServiceImpl implements AnswerService {
             }
 
             //将文件保存到指定的位置
-             File file=new File("/usr/gy/download/user1.xls");
+             File file=new File("usr/gy/download/user1.xls");///usr/gy/download/user1.xls
             try {
+
                 fos = new FileOutputStream(file);
                 workbook.write(fos);
                 System.out.println("写入成功");
                 downloadFile(response,file);
-
+                //downloadTemplate(response);
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -134,5 +142,61 @@ public class AnswerServiceImpl implements AnswerService {
         }
         return null;
     }
+
+
+
+    /////////////////////
+
+    @Resource
+    private ResourceLoader resourceLoader;
+    String path = "download/user1.xls";
+    public void downloadTemplate(HttpServletResponse response) {
+        InputStream inputStream = null;
+        ServletOutputStream servletOutputStream = null;
+        try {
+            String filename = "user1.xls";
+
+            org.springframework.core.io.Resource resource = resourceLoader.getResource("classpath:"+path);
+
+            response.setContentType("application/vnd.ms-excel");
+            response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.addHeader("charset", "utf-8");
+            response.addHeader("Pragma", "no-cache");
+            String encodeName = URLEncoder.encode(filename, StandardCharsets.UTF_8.toString());
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + encodeName + "\"; filename*=utf-8''" + encodeName);
+
+            inputStream = resource.getInputStream();
+            servletOutputStream = response.getOutputStream();
+            IOUtils.copy(inputStream, servletOutputStream);
+            response.flushBuffer();
+            System.out.println("=========下载完成==========");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (servletOutputStream != null) {
+                    servletOutputStream.close();
+
+                }
+                if (inputStream != null) {
+                    inputStream.close();
+
+                }
+                // 召唤jvm的垃圾回收器
+                System.gc();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
+
+
+    //////////////////
+
 
 }
