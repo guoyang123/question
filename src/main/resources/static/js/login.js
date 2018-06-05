@@ -28,7 +28,8 @@ function sendData(datas){
 
                var code= data.resultCode;
                if(code>0){//登录成功
-                   window.location.href="back/home";
+                   ///back/home
+                   window.location.href="back/findallques";
                }else{
                    //登录失败
                    $("#_warn").text(data.msg);

@@ -10,6 +10,7 @@ import com.neuedu.service.AnswerService;
 import com.neuedu.service.QuestionService;
 import com.neuedu.service.impl.QinfoServiceImpl;
 import com.neuedu.vo.QinfoVo;
+import com.neuedu.vo.QuserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,10 +46,8 @@ public class BackQuestionController {
      * 创建问卷调查
      * */
     @RequestMapping("/back/home")
-    public String homepage(HttpSession session){
-         Quser quser=new Quser();
-         quser.setId(1);
-         session.setAttribute(Const.USER_FROM_SESSION,quser);
+    public String homepage(){
+
         return "create";
     }
     /**
@@ -61,7 +60,7 @@ public class BackQuestionController {
         //问卷标题
         String qtitle= request.getParameter("qtitle");
         //用户id
-        int userid=((Quser)(session.getAttribute(Const.USER_FROM_SESSION))).getId();
+        int userid=((QuserVo)(session.getAttribute(Const.USER_FROM_SESSION))).getQuser().getId();
         //生成问卷编号
         String qno=String.valueOf(System.currentTimeMillis());
 
@@ -105,27 +104,19 @@ public class BackQuestionController {
         qinfo.setQno(questionList.get(0).getQno());
         qinfo.setTotalQ(questionList.size());
          qinfoService.updateTotalQ(qinfo);
-       //session中获取用户id
-       Object o=session.getAttribute(Const.USER_FROM_SESSION);
-        Quser quser=null;
-       if(o!=null){
-            quser=(Quser)o;
-           request.setAttribute("quser",quser);
-           request.setAttribute("qno",questionList.get(0).getQno());
-       }
-        List<Qinfo> qinfos= qinfoService.findAllByUserId(request);
-      //  System.out.println("所有问卷信息:"+qinfos);
 
-       /**将某位用户的所有问卷查询出来*/
-        session.setAttribute("qinfos",qinfos);
 
         return "{\"value\":1}";
   }
 
 
   @RequestMapping(value = "/back/findallques")
-    public String findallques(){
-        return "qdetail";
+    public String findallques(HttpServletRequest request){
+      List<Qinfo> qinfos= qinfoService.findAllByUserId(request);
+      /**将某位用户的所有问卷查询出来*/
+      request.getSession().setAttribute("qinfos",qinfos);
+
+      return "qdetail";
   }
 
 

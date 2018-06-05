@@ -1,9 +1,11 @@
 package com.neuedu.service.impl;
 
+import com.neuedu.consts.Const;
 import com.neuedu.dao.QinfoMapper;
 import com.neuedu.entity.Qinfo;
 import com.neuedu.entity.Quser;
 import com.neuedu.service.QInfoService;
+import com.neuedu.vo.QuserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,17 +34,26 @@ public class QinfoServiceImpl implements QInfoService {
 
     @Override
     public List<Qinfo> findAllByUserId(HttpServletRequest request) {
-        Quser quser=(Quser)request.getAttribute("quser");
+
+        Quser quser=((QuserVo)(request.getSession().getAttribute(Const.USER_FROM_SESSION))).getQuser();
         String qno=(String)request.getAttribute("qno");
         List<Qinfo> infos=null;
 
         if(quser!=null){
            infos= qinfoMapper.findAllByUserId(quser.getId());
-           for(Qinfo info:infos){
-               if(info.getQno().equals(qno)){
-                   info.setSelect(true);
+           if(infos==null||infos.size()==0){
+               return null;
+           }
+           if(qno==null||qno.equals("")){
+               infos.get(0).setSelect(true);
+           }else{
+               for(Qinfo info:infos){
+                   if(info.getQno().equals(qno)){
+                       info.setSelect(true);
+                   }
                }
            }
+
 
         }
 

@@ -50,7 +50,7 @@ function sendData(datas){
 		success:function(data){
 			console.log(data);
 			//页面的跳转
-			window.location.href="findallques";
+			window.location.href="findallques?qno="+$("#_qno").val();
 		}
 	});
 })
