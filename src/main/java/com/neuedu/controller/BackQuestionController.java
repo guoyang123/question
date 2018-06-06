@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -56,6 +57,11 @@ public class BackQuestionController {
     @RequestMapping("/back/designnew")
     public String designnew(HttpServletRequest request,
                             Model model,HttpSession session){
+        try {
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         System.out.println("=======designnew====");
         //问卷标题
         String qtitle= request.getParameter("qtitle");
