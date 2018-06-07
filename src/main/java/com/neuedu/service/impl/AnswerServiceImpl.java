@@ -56,10 +56,7 @@ public class AnswerServiceImpl implements AnswerService {
         cell.setCellValue("回答时间");
         cell = row.createCell(3);
         cell.setCellValue("用户ip");
-
         FileOutputStream fos = null;
-
-
             //第五步，写入实体数据，实际应用中这些数据从数据库得到,对象封装数据，集合包对象。对象的属性值对应表的每行的值
 
             for (int i = 0; i < qAnswerList.size(); i++) {
@@ -73,7 +70,7 @@ public class AnswerServiceImpl implements AnswerService {
             }
 
             //将文件保存到指定的位置
-             File file=new File("/usr/gy/download/user1.xls");///usr/gy/download/user1.xls
+             File file=new File("D:\\qdownload\\user1.xls");///usr/gy/download/user1.xls
             try {
 
                 fos = new FileOutputStream(file);

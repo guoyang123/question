@@ -56,7 +56,7 @@ public class BackQuestionController {
      * */
     @RequestMapping("/back/designnew")
     public String designnew(HttpServletRequest request,
-                            Model model,HttpSession session){
+                            Model model, HttpSession session){
         try {
             request.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
