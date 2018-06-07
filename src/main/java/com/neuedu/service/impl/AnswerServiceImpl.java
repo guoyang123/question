@@ -70,7 +70,7 @@ public class AnswerServiceImpl implements AnswerService {
             }
 
             //将文件保存到指定的位置
-             File file=new File("D:\\qdownload\\user1.xls");///usr/gy/download/user1.xls
+             File file=new File("/usr/gy/download/user1.xls");///usr/gy/download/user1.xls
             try {
 
                 fos = new FileOutputStream(file);
