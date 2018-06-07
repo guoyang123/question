@@ -58,7 +58,7 @@ function _download(){
    //获取到qno
     var _qno=$("select._select option[selected='selected']").val();
 
-    window.location.href="http://http://gsmzzk.com:8080/back/"+_qno+"/download";
+    window.location.href="http://gsmzzk.com:8080/back/"+_qno+"/download";
 }
 
 function sendData(_qno){
