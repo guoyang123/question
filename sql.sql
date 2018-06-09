@@ -40,11 +40,5 @@ userip        varchar(30)       -- ip
 );
 
 
-select count(id) from qanswer where  qno='1526708582177'
-
-select q.totalQ,q.qtitle  from qinfo q
-left join qanswer a
- on q.qno=a.qno
-where a.qno='';
 
 
