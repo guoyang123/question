@@ -35,7 +35,6 @@ function _submit(){
 
      answers[i]=answer;
     }
-
     //发送ajax请求
     sendData(JSON.stringify(answers));
 }
@@ -58,6 +57,7 @@ function sendData(datas){
                 alert(data);
                 //页面的跳转
                 /*window.location.href="http://localhost:8080/findallques";*/
+                window.location.href=history.back();
             }
         });
     })
