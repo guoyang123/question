@@ -9,4 +9,5 @@ import java.util.List;
 @Component(value = "questionMapper")
 public interface QuestionMapper {
     void saveQues(List<Question> questionList);
+    List<Question> findAllByQno(String qno);
 }

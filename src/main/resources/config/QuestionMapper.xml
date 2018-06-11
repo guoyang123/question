@@ -17,6 +17,10 @@
     </insert>
 
 
+    <!--根据qno查询所有的问题-->
+    <select id="findAllByQno" parameterType="java.lang.String" resultType="que">
+        select qid, title from question where qno=#{qno}
+    </select>
 
 
 </mapper>

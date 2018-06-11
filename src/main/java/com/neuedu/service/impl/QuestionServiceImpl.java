@@ -17,4 +17,10 @@ public class QuestionServiceImpl implements QuestionService{
     public void saveQuestions(List<Question> questionList) {
        questionMapper.saveQues(questionList);
     }
+
+    @Override
+    public List<Question> findAllByQno(String qno) {
+
+        return questionMapper.findAllByQno(qno);
+    }
 }

@@ -2,7 +2,9 @@ package com.neuedu.service.impl;
 
 import com.neuedu.dao.AnswerMapper;
 import com.neuedu.entity.QAnswer;
+import com.neuedu.entity.Question;
 import com.neuedu.service.AnswerService;
+import com.neuedu.service.QuestionService;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -25,6 +27,8 @@ import java.util.List;
 public class AnswerServiceImpl implements AnswerService {
     @Autowired
     private AnswerMapper answerMapper;
+    @Autowired
+    QuestionService questionService;
     @Override
     public void saveBatch(List<QAnswer> qAnswerList) {
         answerMapper.saveBatch(qAnswerList);
@@ -32,14 +36,108 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public List<QAnswer> findAllByQno(String qno,HttpServletResponse response) {
-        List<QAnswer> qAnswerList=answerMapper.findAllByQno(qno);
 
-        System.out.println("====answer="+qAnswerList.size());
-        writeObject2Excel(qAnswerList,response);
-        return qAnswerList;
+          List<Question> questions=  questionService.findAllByQno(qno);
+
+        //List<QAnswer> qAnswerList=answerMapper.findAllByQno(qno);
+
+       // System.out.println("====answer="+qAnswerList.size());
+        //writeObject2Excel(questions,qAnswerList,response);
+        writeObject2Excel(questions,response);
+        return null;
     }
 
     @Override
+    public List<QAnswer> findAnswerByQid(int qid) {
+
+        return answerMapper.findAnswerByQid(qid);
+    }
+
+    @Override
+    public String writeObject2Excel(List<Question> questions,HttpServletResponse response) {
+        //第一步，创建一个workbook对应一个excel文件
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        //第二部，在workbook中创建一个sheet对应excel中的sheet
+        HSSFSheet sheet = workbook.createSheet("问卷调查结果反馈");
+        //第三部，在sheet表中添加表头第0行，老版本的poi对sheet的行列有限制
+        HSSFRow row = sheet.createRow(0);
+        //第四步，创建单元格，设置表头
+
+        if(questions==null||questions.size()==0){
+            System.out.println("===该问卷问题为空====");
+            return null;
+        }
+        HSSFCell cell=null;
+
+        //为第一行单元格赋值
+        for(int i=0;i<questions.size();i++){
+             cell= row.createCell(i);
+            Question question=questions.get(i);
+            cell.setCellValue(question.getTitle());
+
+        }
+        cell = row.createCell(questions.size());
+        cell.setCellValue("回答时间");
+       /* cell = row.createCell((questions.size()+1));
+        cell.setCellValue("用户ip");*/
+        //创建第2-n行单元格
+        //计算需要创建多少行
+        int maxLine=0;
+        for(int i=0;i<questions.size();i++){
+           List<QAnswer> answerList= findAnswerByQid(questions.get(i).getQid());
+           if(maxLine<answerList.size()){
+               maxLine=answerList.size();
+           }
+        }
+        //开始创建行
+        for(int i=0;i<maxLine;i++){
+            HSSFRow row1 = sheet.createRow(i + 1);
+            //创建列
+            for(int c=0;c<questions.size()+1;c++){
+                row1.createCell(c).setCellValue("");
+            }
+        }
+
+        //为每一个单元格赋值
+        //第五步，写入实体数据，实际应用中这些数据从数据库得到,对象封装数据，集合包对象。对象的属性值对应表的每行的值
+
+        for(int i=0;i<questions.size();i++){
+            //第i列
+            List<QAnswer> answerList= findAnswerByQid(questions.get(i).getQid());
+            for(int line=0;line<answerList.size();line++){
+                sheet.getRow(line+1).getCell(i).setCellValue(answerList.get(line).getAnswer());
+            }
+        }
+
+
+
+
+        FileOutputStream fos = null;
+
+        //将文件保存到指定的位置
+        File file=new File("/usr/gy/download/user1.xls");///usr/gy/download/user1.xls
+        try {
+
+            fos = new FileOutputStream(file);
+            workbook.write(fos);
+            System.out.println("写入成功");
+            downloadFile(response,file);
+            //downloadTemplate(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try{
+                fos.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+        }
+
+
+        return null;
+    }
+    /*@Override
     public String writeObject2Excel(List<QAnswer> qAnswerList,HttpServletResponse response) {
         //第一步，创建一个workbook对应一个excel文件
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -92,7 +190,7 @@ public class AnswerServiceImpl implements AnswerService {
 
         return null;
     }
-
+*/
 
     /**文件下载*/
 

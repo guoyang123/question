@@ -12,5 +12,6 @@ import java.util.List;
 public interface AnswerMapper {
     int  saveBatch(List<QAnswer> answerList);
     List<QAnswer> findAllByQno(String qno);
+    List<QAnswer> findAnswerByQid(int qid);
 }
 

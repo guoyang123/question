@@ -22,6 +22,9 @@
         select id,qid,qtitle,qno,answer,answertime,userip from qanswer where qno=#{qno}
     </select>
 
-
+  <!--根据qid查询下面的所有答案-->
+    <select id="findAnswerByQid" parameterType="int" resultType="qanser">
+        select answer from qanswer where qid=#{qid}
+    </select>
 
 </mapper>
